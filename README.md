@@ -29,8 +29,8 @@ SARC aims to be neither. It provides a middle layer — minimal, transparent, ha
 - **Stateless or stateful**  
   Agents can hold memory or be ephemeral.
 
-- **Intent-based routing (SAO model)**  
-  Every message carries a `subject`, `action`, and `object`.
+- **Intent Resolution & Confidence Routing**
+  SARC includes a built-in mechanism to route messages not just based on type — but based on *confidence*.
 
 ## 📦 Project Structure
 sarc/
