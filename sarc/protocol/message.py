@@ -34,17 +34,23 @@ class IntentResolver:
     
     @staticmethod
     def _rule_based(text: str) -> IntentType:
-        lowered = text.lower()
-        if any(x in lowered for x in ["hi", "hello", "hey"]):
-            return IntentType.GREETING
-        elif lowered.endswith("?") or any(x in lowered for x in ["how", "what", "why"]):
-            return IntentType.QUESTION
-        elif any(x in lowered for x in ["do", "make", "create", "run"]):
-            return IntentType.TASK
-        elif any(x in lowered for x in ["thanks", "great job", "nice", "feedback"]):
-            return IntentType.FEEDBACK
-        else:
-            return IntentType.UNKNOWN
+      lowered = text.lower()
+
+      if any(x in lowered for x in ["do", "make", "create", "summarize", "generate", "run"]):
+        return IntentType.TASK
+
+      elif lowered.endswith("?") or any(x in lowered for x in ["how", "what", "why"]):
+        return IntentType.QUESTION
+
+      elif any(x in lowered for x in ["hi", "hello", "hey"]):
+        return IntentType.GREETING
+
+      elif any(x in lowered for x in ["thanks", "great job", "nice", "feedback"]):
+        return IntentType.FEEDBACK
+
+      else:
+        return IntentType.UNKNOWN
+
         
     @staticmethod
     def _model_based(text: str) -> IntentType:

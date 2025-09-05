@@ -1,13 +1,15 @@
 from sarc.core.router import Router
 from sarc.agents.echo_agent import EchoAgent
-from sarc.protocol.message import IntentType
+from sarc.agents.task_agent import TaskAgent
 
-# Ajanı oluştur
+# Agent'ları oluştur
 echo = EchoAgent()
+tasker = TaskAgent()
 
-# Router'a ajanları ver
-router = Router([echo])
+# Router'a kaydet
+router = Router([echo, tasker])
 
 # Test mesajları
-print(router.route("Hey, what's up?"))
-print(router.route("Blorp zzz 9000"))
+print(router.route("Hey there!"))
+print(router.route("Please summarize this document."))
+print(router.route("Do something cool."))
