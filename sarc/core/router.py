@@ -27,7 +27,7 @@ class Router:
         message = SAOMessage(
             subject="user",
             action="auto",
-            object=None,
+            object=None, 
             intent=intent,
             content=text
         )
@@ -43,8 +43,12 @@ class Router:
 
         print(f"[Router] Intent {intent.name}, routed to {top_agent.name}, Score: {top_score}")
 
-        return top_agent.name 
-    
+        if hasattr(top_agent, "handle"):
+            response = top_agent.handle(message)
+            return response
+        else:
+            print(f"[Router] Agent {top_agent.name} has no handle() method! ")
+            return None
     '''
     To be added:
     -Threshold (Not sending messages to agents below a certain score:)

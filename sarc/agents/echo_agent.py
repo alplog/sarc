@@ -3,8 +3,9 @@
 from sarc.protocol.message import SAOMessage, IntentType
 
 class EchoAgent:
-    def __init__(self, name="EchoAgent"):
+    def __init__(self, name="EchoAgent", base_score = 50):
         self.name = name
+        self.base_score = base_score
         self.capabilities = [IntentType.GREETING, IntentType.UNKNOWN]
 
     def can_handle(self, intent: IntentType) -> bool:
